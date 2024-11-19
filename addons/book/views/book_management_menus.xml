@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Định nghĩa menu item -->
+    <!-- <menuitem
+        id="book_management_menu"
+        name="Book Management"
+        action="action_book_management"
+    /> -->
+    <menuitem id="book_management_model_menu_action" action="action_book_management" name="Book Management"/>
+</odoo>

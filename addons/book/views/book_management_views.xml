@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View Tree: Hiển thị danh sách các sách -->
+    <record id="view_book_management_tree" model="ir.ui.view">
+        <field name="name">book.management.tree</field>
+        <field name="model">book.management</field>
+        <field name="arch" type="xml">
+            <tree string="Book Management">
+                <field name="name" string="Tên sách"/>
+                <field name="author" string="Tác giả"/>
+                <field name="price" string="Giá"/>
+                <field name="quantity" string="Số lượng"/>
+                <field name="category" string="Thể loại"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View Form: Hiển thị chi tiết một cuốn sách -->
+    <record id="view_book_management_form" model="ir.ui.view">
+        <field name="name">book.management.form</field>
+        <field name="model">book.management</field>
+        <field name="arch" type="xml">
+            <form string="Book Management">
+                <sheet>
+                    <group>
+                        <field name="name" string="Tên sách"/>
+                        <field name="author" string="Tác giả"/>
+                        <field name="price" string="Giá"/>
+                        <field name="quantity" string="Số lượng"/>
+                        <field name="category" string="Thể loại"/>
+                    </group>
+                    <group>
+                        <field name="description" string="Mô tả" colspan="2"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+</odoo>

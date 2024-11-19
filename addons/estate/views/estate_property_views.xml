@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree view: Danh sách bất động sản -->
+    <record id="estate_property_view_tree" model="ir.ui.view">
+        <field name="name">estate_property.view.tree</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <tree string="Estate Property">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="postcode"/>
+                <field name="date_availability"/>
+                <field name="expected_price"/>
+                <field name="selling_price" readonly="1"/> <!-- Làm cho giá bán chỉ đọc -->
+                <field name="property_type_id"/> <!-- Thêm trường loại bất động sản -->
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="facades"/>
+                <field name="garage"/>
+                <field name="garden"/>
+                <field name="garden_area"/>
+                <field name="garden_orientation"/>
+                <field name="active"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="estate_property_view_form" model="ir.ui.view">
+        <field name="name">estate_property.view.form</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <form string="Estate Property">
+                <sheet>
+                    <group>
+                        <field name="tag_ids" widget="many2many_tags"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="property_type_id"/>
+                            <field name="postcode"/>
+                            <field name="date_availability"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                        </group>
+                    </group>
+  
+                    <notebook>
+                        <page string="Additional Info">
+                            <group>
+                                <field name="buyer_id"/> <!-- Buyer từ estate_type -->
+                                <field name="salesperson_id"/> <!-- Salesperson từ estate_type -->
+                            </group>
+                        </page>
+                        <page string="Offers Info">
+                            <group>
+                                <field name="offer_ids">
+                                    <tree>
+                                        <field name="partner_ids" />
+                                        <field name="price" />
+                                        <field name="status" />
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Description">
+                            <group>
+                                <field name="name"/>
+                                <field name="description"/>
+                            </group>
+                            <group>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                            </group>
+                              <group>
+                        <group>
+                            <field name="garage"/>
+                            <field name="garden"/>
+                        </group>
+                        <group>
+                            <field name="garden_area"/>
+                            <field name="garden_orientation"/>
+                        </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="active"/>
+                                <field name="state"/>
+                                <field name="total_area" />
+                            </group>
+                        </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_property_view_search" model="ir.ui.view">
+        <field name="name">estate_property.view.search</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <search string="Estate Property">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="postcode"/>
+                <field name="date_availability"/>
+                <field name="expected_price"/>
+                <field name="selling_price" readonly="1"/>  <!-- Làm cho giá bán chỉ đọc -->
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="facades"/>
+                <field name="garage"/>
+                <field name="garden"/>
+                <field name="garden_area"/>
+                <field name="garden_orientation"/>
+                <field name="active"/>
+                <field name="state"/>
+
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="State" name="State" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>
